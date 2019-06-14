@@ -1,0 +1,123 @@
+\documentclass[portrait,a0paper,fontscale=0.30]{baposter}
+
+% Compile with double 'pdflatex poster'
+
+\usepackage[utf8]{inputenc}
+
+% Choose your favorite font here. I go with Fira by default.
+%
+\usepackage[sfdefault]{FiraSans}          % very recommended
+%\usepackage[sfdefault]{cabin}             % pretty good also with 'condensed'
+%\usepackage{cmbright}                     % also recommendable, more TeX-ish
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[condensed,sfdefault]{roboto}  % also works with 'condensed'
+%
+% The following fonts contain serifs, but are still pretty good for posters.
+% Comment out the familydefault setting below if using serif fonts.
+%
+%\usepackage[mono=false]{libertine}  % Libertine is almost standard now.
+%\usepackage{fouriernc}              % URW schoolbook, for lovable vintage-style posters.
+%\usepackage{lmodern}                % The usual TeX font for TeX and math-oriented posters.
+
+\usepackage[T1]{fontenc}
+\usepackage{color}
+
+% Comment this out if using serif fonts.
+\renewcommand{\familydefault}{\sfdefault}
+
+% Increase/decrease this as you like; the units are in the baposter-ish scale.
+\newcommand{\elixirFooterSize}{4cm}
+
+\definecolor{eblue}{RGB}{0,81,113}
+\definecolor{eorange}{RGB}{238,117,2}
+\color{eblue}
+
+\begin{document}
+
+% Custom poster background; extra coordinate is set for other nodes to follow below.
+\background{\begin{tikzpicture}[remember picture,overlay]
+    \node [inner sep=0pt, anchor=north west] (headerbg)
+      at (current page.north west)
+      {\includegraphics[width=\paperwidth]{header.jpg}};
+    \coordinate (headerbgse)
+      at ([yshift=-1em] headerbg.south east);
+    \coordinate (footerstart)
+      at ([yshift=\elixirFooterSize] current page.south);
+    \fill [fill=eorange]
+      (current page.west |- footerstart)
+      rectangle
+      ([yshift=-1em] current page.east |- footerstart);
+    \coordinate (footersepse)
+      at ([yshift=-2em] footerstart);
+
+    % small notice about where to get this template; omit if needed.
+    \node [anchor=south west, rotate=90, text width=10em, font=\tiny, color=black!25]
+      at ([xshift=-1pt, yshift=1pt] current page.south east)
+      {\TeX\ ELIXIR poster template \\ \texttt{github.com/exaexa/elixirposter-tex}};
+\end{tikzpicture}}
+
+\begin{poster}{%
+  eyecatcher=false,
+  background=user,
+  columns=2,
+  headerborder=none,
+  textborder=none,
+  headershape=rectangle,
+  headershade=plain,
+  headerColorOne=white,
+  boxshade=none,
+  headerFontColor=eorange,
+  headerfont=\Large
+  }{}%
+  {\vspace{2em} \color{white} \fontsize{32pt}{32pt}\selectfont
+  Put the poster title here. %TODO
+  }%
+  {
+  % You may also include a subtitle (not recommended in ELIXIR template)
+  }{}
+
+
+%
+% TODO
+%
+% Poster editing starts here!
+%
+
+\begin{posterbox}[name=abstract, column=0, span=2, below=headerbg]{}
+Put the long abstract here; template recommends that it spans 2-3 lines of the whole poster text width. Slightly different designs are possible (e.g.~set the span of this box to 1, and continue the right column below `headerbg').
+\end{posterbox}
+
+\begin{posterbox}[name=boxleft, below=abstract, column=0]{Box in the left part of the poster}
+Stuff from the left goes here.
+
+Maybe also pictures.
+\end{posterbox}
+\begin{posterbox}[name=boxright, below=abstract, column=1]{Another box, now more on the right}
+Stuff from the right goes here.
+
+Maybe more pictures.
+\end{posterbox}
+
+%
+% TODO
+%
+% Footer editing starts here; you have a bit of space to put posterboxes below
+% 'footersep'; which is the position of the thick orange line below.
+%
+
+\begin{posterbox}[name=footer, below=footersep, column=0]{Contact}
+Your Name Here % if including more names, \underline the presenting person
+
+\texttt{your.email@institute.here}
+
+Your Institute, Your Town, Your Country
+\end{posterbox}
+
+\begin{posterbox}[name=funding, below=footersep, column=1]{Funding}
+Put all your institute logos here.
+
+These should also include EU flag, and the logo of your corresponding ELIXIR node and/or funding source.
+\end{posterbox}
+
+\end{poster}
+\end{document}
