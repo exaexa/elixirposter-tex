@@ -1,7 +1,9 @@
 
 # LaTeX poster template for ELIXIR-Europe
 
-Completely unofficial, but certainly useful for avoiding PowerPoint.
+<img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0" />
+
+Completely unofficial, but certainly useful for avoiding PowerPoint. 
 
 ## How to use it?
 
